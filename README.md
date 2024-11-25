@@ -1,5 +1,5 @@
 # ASTLIBRA-tool
-Program for changing game files ASTLIBRA (.dxa .dig LOCALIZE_.DAT)
+Program for changing game files ASTLIBRA (.dxa, .dig, LOCALIZE_.DAT, .dft)
 
 # Extract .dxa
 To extract archives, drag the archive to ASTLIBRA_Dec.exe
@@ -36,6 +36,16 @@ python _ALOC.py LOCALIZE_.DAT_dec _extracted_texts.csv -p
 ```
 
 To ensure the text is in order, sort by the Offset_start column in ascending order, and then, before packaging, sort by the I column.
+
+To allow the game to see the packed text after unpacking, the .exe file needs to be slightly modified. Specifically, the byte sequence
+```
+89 41 F8 8B 41 FC C1 C8 04 89 41 FC
+```
+to
+```
+90 90 90 8B 41 FC C1 C8 04 90 90 90
+```
+This will disable the attempt to decode the localization file.
 
 # Create FONT
 example:
