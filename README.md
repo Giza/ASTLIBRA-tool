@@ -38,6 +38,8 @@ python _ALOC.py LOCALIZE_.DAT_dec _extracted_texts.csv -p
 To ensure the text is in order, sort by the Offset_start column in ascending order, and then, before packaging, sort by the I column.
 
 To allow the game to see the packed text after unpacking, the .exe file needs to be slightly modified. Specifically, the byte sequence
+
+PC:
 ```
 89 41 F8 8B 41 FC C1 C8 04 89 41 FC
 ```
@@ -45,6 +47,16 @@ to
 ```
 90 90 90 8B 41 FC C1 C8 04 90 90 90
 ```
+
+Switch:
+```
+4A 0D 8A 13 6B 11 8B 13
+```
+to
+```
+1F 20 03 D5 1F 20 03 D5
+```
+
 This will disable the attempt to decode the localization file.
 
 # Create FONT
